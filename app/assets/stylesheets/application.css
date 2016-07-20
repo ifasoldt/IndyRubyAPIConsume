@@ -15,7 +15,21 @@
  *= require_self
  */
 
+ * {
+   color: white;
+   background-color: #21252B
+ }
+
 .user-row {
   margin-top: 5px;
   border: 1px solid #C2C3C4;
+}
+
+.repo-row {
+  margin-top: 5px;
+  border: 1px solid #C2C3C4;
+}
+
+.title {
+  color:#A61414;
 }

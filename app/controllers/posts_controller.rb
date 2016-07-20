@@ -10,10 +10,11 @@ class PostsController < ApplicationController
 
   def recent_activity
     @recent_activities = Octokit.user_events(params[:user], sort:'created_at')
+    @recent_activities
   end
 
   def repositories
-    repositories_search = Octokit.search_repos("user:#{params[:user]}", sort:'stars', per_page: 5.0, page: params[:page])
+    repositories_search = Octokit.search_repos("user:#{params[:user]}", sort:'stars', per_page: 5, page: params[:page])
     @pages = (repositories_search[:total_count]/5.0).ceil
     @repositories = repositories_search[:items]
   end

@@ -1,5 +1,12 @@
+<h2 class="row"> <%= params[:user] %>'s recent activity: </h2>
+<% if @recent_activities == []%>
+<h3 class="row oops-message">OOPS, <%= params[:user] %> doesn't have any recent activity!</h3>
+<% end %>
 <% @recent_activities.each do |recent_activity| %>
-<h3 class="row"> Event: <%=recent_activity[:payload][:action] %> a <%=recent_activity[:type] %> </h3>
-<h3 class="row"> On: <%= recent_activity[:repo][:name] %> </h3>
-<h3 class="row"> <%= recent_activity[:created_at].strftime("on %b %e, %l:%M %p") %></h3>
+<div class="repo-row row">
+
+<h3 class="col-md-10 col-md-offset-1"> Event: <%=recent_activity[:payload][:action] %> a <%=recent_activity[:type] %> </h3>
+<h3 class="col-md-10 col-md-offset-1"> On: <%= recent_activity[:repo][:name] %> </h3>
+<h3 class="col-md-10 col-md-offset-1"> <%= recent_activity[:created_at].strftime("on %b %e, %l:%M %p") %></h3>
+</div>
 <% end %>

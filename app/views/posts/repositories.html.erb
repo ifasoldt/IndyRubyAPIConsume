@@ -1,3 +1,5 @@
+<h2 class="row"><%= params[:user]%>'s Repositories</h2>
+
 <h4 class="row">
   <% @pages.times do |x| %>
     <%= link_to "Page #{x + 1}", page: x + 1 %> ||
@@ -5,9 +7,11 @@
  </h4>
 
 <% @repositories.each do |repo| %>
-<h5 class="row">Repo Name: <%= link_to repo.name, repo.html_url %> </h5>
-<h5 class="row">Description: <%= repo.description %> </h5>
-<h5 class="row"><%= repo.created_at.strftime("Created: %b %d, %Y") %> </h5>
-<h5 class="row"><%= repo.updated_at.strftime("Last updated: %b %d, %Y") %></h5>
-<h5 class="row">Stars:<%= repo.watchers %> </h5>
+<div class="row repo-row">
+  <h2 class="col-md-10 col-md-offset-1">Repo Name: <%= link_to repo.name, repo.html_url %> </h2>
+  <h5 class="col-md-10 col-md-offset-1">Description: <%= repo.description %> </h5>
+  <h5 class="col-md-10 col-md-offset-1"><%= repo.created_at.strftime("Created: %b %d, %Y") %> </h5>
+  <h5 class="col-md-10 col-md-offset-1"><%= repo.updated_at.strftime("Last updated: %b %d, %Y") %></h5>
+  <h5 class="col-md-10 col-md-offset-1">Stars:<%= repo.watchers %> </h5>
+</div>
 <% end %>
