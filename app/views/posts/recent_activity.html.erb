@@ -1,0 +1,5 @@
+<% @recent_activities.each do |recent_activity| %>
+<h3 class="row"> Event: <%=recent_activity[:payload][:action] %> a <%=recent_activity[:type] %> </h3>
+<h3 class="row"> On: <%= recent_activity[:repo][:name] %> </h3>
+<h3 class="row"> <%= recent_activity[:created_at].strftime("on %b %e, %l:%M %p") %></h3>
+<% end %>

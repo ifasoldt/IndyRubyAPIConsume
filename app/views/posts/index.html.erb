@@ -1,0 +1,21 @@
+<h4 class="row">
+  <% @pages.times do |x| %>
+    <%= link_to "Page #{x + 1}", page: x + 1 %> ||
+  <% end %>
+ </h4>
+
+<% @indy_ruby_advanced_users.each do |user| %>
+<div class="row user-row">
+  <div class="col-md-2">
+    <%= image_tag user.avatar_url, class:"img-responsive" %>
+  </div>
+  <div class="col-md-6 col-md-offset-1">
+    <h3 class="row">Username: <%= link_to user.login, user.html_url %></h3>
+    <h5 class="row"> <%= user.created_at.strftime("Joined Github on %b %d, %Y") %></h5>
+    <h5 class="row">Total Repos: <%= (user.public_repos).to_i + (user.total_private_repos).to_i %></h5>
+    <h5 class="row">Followers: <%= user.followers%></h5>
+    <h5 class="row"><%= link_to 'Recent Activity', recent_activity_path(user: user.login)%> </h5>
+    <h5 class="row"><%= link_to 'Repositories', repositories_path(user: user.login)%> </h5>
+  </div>
+</div>
+<% end %>
